@@ -1,2 +1,2 @@
-tcp:fairlectrum.fair-coin.org
-tls:fairlectrum.fair.to
+tls:electrum.faircoin.world
+tcp:electrumfair.punto0.org

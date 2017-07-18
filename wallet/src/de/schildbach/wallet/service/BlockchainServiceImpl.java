@@ -564,6 +564,12 @@ public class BlockchainServiceImpl extends android.app.Service implements Blockc
         broadcastPeerState(0);
 
         blockChainFile = new File(getDir("blockstore", Context.MODE_PRIVATE), Constants.Files.BLOCKCHAIN_FILENAME);
+
+        if (wallet.isFairCoin1Upgrade()) {
+            log.info("FairCoin1 upgrade detected. Deleteing old blockchain file");
+            blockChainFile.delete();
+        }
+
         final boolean blockChainFileExists = blockChainFile.exists();
 
         if (!blockChainFileExists) {

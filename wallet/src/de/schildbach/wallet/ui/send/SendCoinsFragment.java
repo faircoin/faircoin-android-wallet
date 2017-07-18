@@ -1006,10 +1006,14 @@ public final class SendCoinsFragment extends Fragment {
         sendRequest.emptyWallet = paymentIntent.mayEditAmount()
                 && finalAmount.equals(wallet.getBalance(BalanceType.AVAILABLE));
         sendRequest.feePerKb = fees.get(feeCategory);
+
+        // TODO: implement to take dynamic fee rate from the FairCoin2 dynamic chainparametners
         //sendRequest.feePerKb = wallet.getCurrentTransactionFee();
         sendRequest.memo = paymentIntent.memo;
         sendRequest.exchangeRate = amountCalculatorLink.getExchangeRate();
         sendRequest.aesKey = encryptionKey;
+
+        log.info("FairCoin2: got fee category {} / feePerKb {}", feeCategory, sendRequest.feePerKb.toFriendlyString());
 
         new SendCoinsOfflineTask(wallet, backgroundHandler) {
             @Override
