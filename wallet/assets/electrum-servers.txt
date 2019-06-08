@@ -1,2 +1,2 @@
-tcp:electrum.akinbo.org
-tls:testnet.hsmiths.com
+tls:electrum.faircoin.world
+tls:electrumfair.punto0.org

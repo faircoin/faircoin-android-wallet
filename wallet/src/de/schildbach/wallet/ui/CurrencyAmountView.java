@@ -12,26 +12,25 @@
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
 package de.schildbach.wallet.ui;
-
-import javax.annotation.Nullable;
 
 import org.bitcoinj.core.Coin;
 import org.bitcoinj.core.Monetary;
 import org.bitcoinj.utils.MonetaryFormat;
 
 import de.schildbach.wallet.Constants;
+import de.schildbach.wallet.R;
 import de.schildbach.wallet.util.GenericUtils;
 import de.schildbach.wallet.util.MonetarySpannable;
-import de.schildbach.wallet_test.R;
 
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Paint;
 import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.text.Editable;
@@ -45,6 +44,7 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.TextView;
+import androidx.annotation.Nullable;
 
 /**
  * @author Andreas Schildbach
@@ -120,6 +120,9 @@ public final class CurrencyAmountView extends FrameLayout {
     }
 
     public void setCurrencySymbol(@Nullable final String currencyCode) {
+        final float textSize = textView.getTextSize();
+        final float smallerTextSize = textSize * (20f / 24f);
+        final float offset = textSize * 0.37f;
         if (MonetaryFormat.CODE_BTC.equals(currencyCode)) {
             currencySymbolDrawable = getResources().getDrawable(R.drawable.currency_symbol_btc);
             localCurrencyCode = null;
@@ -129,13 +132,9 @@ public final class CurrencyAmountView extends FrameLayout {
         } else if (MonetaryFormat.CODE_UBTC.equals(currencyCode)) {
             currencySymbolDrawable = getResources().getDrawable(R.drawable.currency_symbol_ubtc);
             localCurrencyCode = null;
-        } else if (currencyCode != null) // fiat
-        {
-            final String currencySymbol = GenericUtils.currencySymbol(currencyCode);
-            final float textSize = textView.getTextSize();
-            final float smallerTextSize = textSize * (20f / 24f);
-            currencySymbolDrawable = new CurrencySymbolDrawable(currencySymbol, smallerTextSize, lessSignificantColor,
-                    textSize * 0.37f);
+        } else if (currencyCode != null) {
+            currencySymbolDrawable = new CurrencySymbolDrawable(GenericUtils.currencySymbol(currencyCode),
+                    smallerTextSize, lessSignificantColor, offset);
             localCurrencyCode = currencyCode;
         } else {
             currencySymbolDrawable = null;

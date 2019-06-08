@@ -1,43 +1,47 @@
 apply plugin: 'com.android.application'
 apply plugin: 'androidsvgdrawable'
 
+configurations {
+    all*.exclude group: 'com.google.android', module: 'android'
+    all*.exclude group: 'androidx.legacy', module: 'legacy-support-core-ui'
+    all*.exclude group: 'androidx.legacy', module: 'legacy-support-core-utils'
+}
+
 dependencies {
-    compile(project(':integration-android')) {
-        exclude(group: 'com.google.android', module: 'android')
-    }
-    compile 'com.android.support:support-annotations:25.3.0'
-    compile 'com.android.support:support-compat:25.3.0'
-    compile('com.android.support:support-v13:25.3.0') {
-        exclude(group: 'com.android.support', module: 'support-fragment')
-        exclude(group: 'com.android.support', module: 'support-media-compat')
-    }
-    compile 'com.android.support:support-core-utils:25.3.0'
-    compile 'com.android.support:recyclerview-v7:25.3.0'
-    compile 'com.android.support:cardview-v7:25.3.0'
-    compile 'org.bitcoinj:bitcoinj-core:0.14.4'
-    compile 'com.google.protobuf:protobuf-java:2.6.1'
-    compile 'com.google.guava:guava:20.0'
-    compile 'com.google.zxing:core:3.3.0'
-    compile 'com.squareup.okhttp:okhttp:2.7.5'
-    compile 'com.squareup.okhttp:logging-interceptor:2.7.5'
-    compile 'com.squareup.moshi:moshi:1.3.1'
-    compile 'com.netki:wallet-name-resolver:0.1.3'
-    compile 'org.slf4j:slf4j-api:1.7.22'
-    compile('com.github.tony19:logback-android-classic:1.1.1-6') {
-        exclude(group: 'com.google.android', module: 'android')
-    }
-    compile 'com.github.tony19:logback-android-core:1.1.1-6'
-    compile 'com.google.code.findbugs:jsr305:2.0.3'
-    testCompile 'junit:junit:4.12'
+    implementation project(':integration-android')
+    implementation 'androidx.annotation:annotation:1.0.2'
+    implementation 'androidx.core:core:1.0.1'
+    implementation 'androidx.fragment:fragment:1.0.0'
+    implementation 'androidx.recyclerview:recyclerview:1.0.0'
+    implementation 'androidx.cardview:cardview:1.0.0'
+    implementation 'androidx.coordinatorlayout:coordinatorlayout:1.0.0'
+    implementation 'androidx.viewpager:viewpager:1.0.0'
+    implementation 'androidx.localbroadcastmanager:localbroadcastmanager:1.0.0'
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.0.0'
+    implementation 'androidx.sqlite:sqlite:2.0.1'
+    implementation 'androidx.room:room-runtime:2.0.0'
+    annotationProcessor "androidx.room:room-compiler:2.0.0"
+    implementation 'org.bouncycastle:bcprov-jdk15on:1.60'
+    implementation 'com.lambdaworks:scrypt:1.4.0'
+    implementation 'com.google.protobuf:protobuf-java:3.6.1'
+    implementation 'com.google.guava:guava:27.0.1-android'
+    implementation 'com.google.zxing:core:3.3.3'
+    implementation 'com.squareup.okhttp3:okhttp:3.12.1'
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.12.1'
+    implementation 'com.squareup.moshi:moshi:1.6.0'
+    implementation 'org.slf4j:slf4j-api:1.7.25'
+    implementation 'com.github.tony19:logback-android:1.3.0-2'
+    testImplementation 'junit:junit:4.12'
+    implementation files('libs/faircoinj-core-0.15.1.jar')
 }
 
 ext {
-    archivesBaseName = 'bitcoin-wallet'
+    archivesBaseName = 'faircoin-wallet'
 }
 
 android {
-    compileSdkVersion 'android-25'
-    buildToolsVersion '25.0.2'
+    compileSdkVersion 'android-28'
+    buildToolsVersion '28.0.3'
 
     lintOptions {
         abortOnError false
@@ -45,12 +49,30 @@ android {
     }
 
     defaultConfig {
+        applicationId 'de.schildbach.wallet.faircoin'
         generatedDensities = ['hdpi', 'xhdpi']
+
+        dexOptions {
+            preDexLibraries false
+        }
+
+        ndk {
+            abiFilters 'armeabi-v7a', 'x86'
+        }
+
+        externalNativeBuild {
+            cmake {
+                cFlags '-DHAVE_CONFIG_H'
+            }
+        }
+        minSdkVersion 21
+        targetSdkVersion 28
     }
 
     buildTypes {
         all {
             minifyEnabled true
+            shrinkResources true
             proguardFile 'proguard.cfg'
         }
         debug {
@@ -72,18 +94,21 @@ android {
         }
     }
 
+    externalNativeBuild {
+        cmake {
+            path 'cpp/CMakeLists.txt'
+        }
+    }
+
     packagingOptions {
+        exclude 'META-INF/*.version'
+        exclude 'META-INF/proguard/**'
         exclude 'lib/x86_64/darwin/libscrypt.dylib'
-        exclude 'lib/x86_64/freebsd/libscrypt.so'
-        exclude 'lib/x86_64/linux/libscrypt.so'
-        exclude 'com/google/thirdparty/publicsuffix/PublicSuffixPatterns.gwt.xml'
-        exclude 'com/google/thirdparty/publicsuffix/PublicSuffixType.gwt.xml'
+        exclude 'okhttp3/internal/publicsuffix/publicsuffixes.gz'
         exclude 'org/bitcoinj/crypto/mnemonic/wordlist/english.txt'
         exclude 'org/bitcoinj/crypto/cacerts'
-        exclude 'org.bitcoin.production.checkpoints.txt'
-        exclude 'org.bitcoin.test.checkpoints.txt'
-        exclude 'messages.properties'
-        exclude 'META-INF/services/sun.net.spi.nameservice.NameServiceDescriptor'
+        exclude 'org.faircoin.production.checkpoints.txt'
+        exclude 'org.faircoin.test.checkpoints.txt'
     }
 }
 

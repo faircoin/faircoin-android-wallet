@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<resources>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
   <string name="toast_wallet_reset">Din plånbok nollställdes!\nDet kan ta ett tag innan den återställts</string>
   <string name="wallet_disclaimer_fragment_remind_safety">Använd på egen risk. Läs &lt;u&gt;säkerhetsråden&lt;/u&gt;.</string>
   <string name="wallet_disclaimer_fragment_remind_backup">Du behöver &lt;u&gt;säkerhetskopiera din plånbok&lt;/u&gt;!</string>
@@ -25,7 +25,7 @@
   <string name="exchange_rates_options_search">Sök växlingskurs</string>
   <string name="wallet_transactions_fragment_empty_text_received">Inga bitcoin har mottagits hittills</string>
   <string name="wallet_transactions_fragment_empty_text_sent">Inga bitcoin har skickats hittills</string>
-  <string name="wallet_transactions_fragment_empty_text_howto">Hur får man tag i bitcoin?\n\nKöp för svenska kronor,\nsälj varor eller tjänster eller\ntjäna genom att arbeta.</string>
+  <string name="wallet_transactions_fragment_empty_text_howto">Hur får man tag i bitcoin?\nKöp för svenska kronor,\nsälj varor eller tjänster eller\ntjäna genom att arbeta.</string>
   <string name="wallet_transactions_row_warning_backup">Grattis, du fick din första betalning! Har du redan &lt;u&gt;säkerhetskopierat din plånbok&lt;/u&gt;, för att skydda mot förlust?</string>
   <string name="wallet_transactions_row_warning_storage_encryption">Tips: för att öka säkerheten på din plånbok kan du &lt;u&gt;kryptera din enhet&lt;/u&gt;. Det skyddar också dina andra appar.</string>
   <string name="wallet_transactions_fragment_coinbase">genererade</string>
@@ -46,9 +46,8 @@
   <string name="wallet_timeskew_dialog_title">Kontrollera inställningar för datum &amp; tid</string>
   <string name="wallet_timeskew_dialog_msg">Enhetens tid är fel med %d minuter. Du kan förmodligen inte skicka eller ta emot Bitcoin på grund av detta.\n\nDu bör kontrollera och korrigera tiden och tidszonen.</string>
   <string name="wallet_version_dialog_title">En ny version är tillgänglig!</string>
-  <string name="wallet_version_dialog_msg">Denna version löser viktiga buggar. För mer information, se ändringsloggen på Google Play.</string>
+  <string name="wallet_version_dialog_msg">Denna version löser viktiga buggar. För mer information, se ändringsloggen på %s.</string>
   <string name="wallet_version_dialog_msg_deprecated">Om du inte ser en uppdatering så beror det förmodligen på att din version av Android inte längre stöds.</string>
-  <string name="wallet_version_dialog_button_market">Google Play</string>
   <string name="wallet_version_dialog_button_binary">Ladda ner</string>
   <string name="wallet_old_sdk_dialog_title">Android-versionen är inaktuell</string>
   <string name="wallet_old_sdk_dialog_message">Chansen är stor att någon av de kommande releaserna av Bitcoin Wallet inte kommer att fungera på din enhet längre. I vissa fall kan det bli svårt att spendera dina tillgångar med den här enheten.\n\nSåvida du inte vet vad du gör, rekommenderas att du flyttar dina bitcoin snart.</string>
@@ -186,19 +185,12 @@
   <string name="restore_wallet_dialog_success">Din plånbok återskapades.</string>
   <string name="restore_wallet_dialog_success_replay">Din plånbok har återskapats. Beloppet kommer att beräknas snart. Detta kommer att ta en stund.</string>
   <string name="import_keys_dialog_failure">Plånboken kunde inte återskapas:\n\n%s\n\nFelaktigt lösenord?</string>
-  <string name="backup_wallet_permission_dialog_title">Skrivrättighet saknas</string>
-  <string name="backup_wallet_permission_dialog_message">För att kunna ta säkerhetskopior av din plånbok till extern lagring, måste du tillåta skrivrättigheter.</string>
   <string name="export_keys_dialog_title">Säkerhetskopiera plånbok</string>
   <string name="backup_wallet_dialog_message">Din säkerhetskopia kommer att krypteras med ett valt lösenord och lagras på extern plats.</string>
   <string name="backup_wallet_dialog_warning_encrypted">Din plånbok är skyddad av en betalnings-PIN. Se till att du kommer ihåg din PIN-kod tillsammans med lösenordet för säkerhetskopian.</string>
   <string name="export_keys_dialog_button_export">Säkerhetskopiera</string>
-  <string name="export_keys_dialog_success"><![CDATA[<p>Din plånbok har säkerhetskopierats till <tt>%s</tt></p><p>Om din enhet har uttagbart SD-kort, <i>bör</i> din säkerhetskopia vara på SD-kortet. Ta ut SD-koret och lägg det på en säker plats. Om SD-kortet <i>inte</i> uttagbart, måste du lagra din säkerhetskopia på någon annan plats än på din enhet.</p><p><b>Om enheten är den enda platsen säkerhetskopian finns på finns det en risk att du förlorar både enheten och säkerhetskopian samtidigt!</b></p><p>I alla fall, se till att du kommer ihåg ditt lösenord till din säkerhetskopia. Vill du arkivera din plånbok nu?</p>]]></string>
+  <string name="export_keys_dialog_success"><![CDATA[<p>Din plånbok har säkerhetskopierats till <tt>%s</tt></p><p><b>Om enheten är den enda platsen säkerhetskopian finns på finns det en risk att du förlorar både enheten och säkerhetskopian samtidigt!</b></p><p>I alla fall, se till att du kommer ihåg ditt lösenord till din säkerhetskopia.</p>]]></string>
   <string name="export_keys_dialog_failure">Din plånbok kunde in säkerhetskopieras:\n%s</string>
-  <string name="export_keys_dialog_button_archive">Arkiv</string>
-  <string name="export_keys_dialog_mail_subject">Bitcoin Wallet-backup</string>
-  <string name="export_keys_dialog_mail_text">Den bifogade krypterade filen innehåller privata bitcoinnycklar och bör förvaras säkert i alla lägen. Glöm inte krypteringslösenordet!</string>
-  <string name="export_keys_dialog_mail_intent_chooser">Arkivera av plånboken med…</string>
-  <string name="export_keys_dialog_mail_intent_failed">Arkivering av plånboken misslyckades.</string>
   <string name="import_export_keys_dialog_password">lösenord</string>
   <string name="backup_wallet_dialog_password_again">igen</string>
   <string name="backup_wallet_dialog_password_mismatch">Felmatchning!</string>
@@ -261,11 +253,11 @@
   <string name="preferences_initiate_reset_summary">Återställer blockkedjan, transaktioner och plånboksbalansen, det tar en stund.</string>
   <string name="preferences_initiate_reset_dialog_message">Vill du återställa och återsynkronisera blockkedjan? Detta kommer att tillfälligt dölja plånbokens saldo och radera genomförda transaktioner. Båda dessa kommer att återställas när blockkedjans synkronisering fortsätter.</string>
   <string name="preferences_initiate_reset_dialog_positive">Återställ</string>
-  <string name="preferences_extended_public_key_title">Visa xpub</string>
+  <string name="preferences_extended_public_key_title">Visa extended public key</string>
   <string name="preferences_extended_public_key_summary">Visa din plånboks publika huvudnyckel så den kan importeras till andra program och tjänster. Men var försiktig: Detta kommer att avslöja dina kontouppgifter för det program som importerar nyckeln.</string>
   <string name="bitmap_fragment_share">Dela…</string>
   <string name="extended_public_key_fragment_title">Publik huvudnyckel</string>
-  <string name="extended_public_key_fragment_share">Dela xpub…</string>
+  <string name="extended_public_key_fragment_share">Dela extended public key…</string>
   <string name="report_issue_dialog_title_issue">Rapportera problem</string>
   <string name="report_issue_dialog_title_crash">Tidigare krasch upptäckt</string>
   <string name="report_issue_dialog_message_issue">Beskriv felet så utförligt som möjligt så att det går att återskapa händelsen.</string>
@@ -277,7 +269,6 @@
   <string name="report_issue_dialog_collect_application_log">Bifoga applikationslogg</string>
   <string name="report_issue_dialog_collect_wallet_dump">Bifoga plånboksdump</string>
   <string name="report_issue_dialog_mail_intent_chooser">Skicka rapport med…</string>
-  <string name="report_issue_dialog_mail_intent_failed">Rapportering misslyckades</string>
   <string name="about_title">Om</string>
   <string name="about_version_title">Version</string>
   <string name="about_copyright_title">Copyright</string>
@@ -287,9 +278,7 @@
   <string name="about_credits_bitcoinj_title">bitcoinj %s, en implementation av Bitcoin-protokollet</string>
   <string name="about_credits_zxing_title">ZXing, ett bibliotek för bearbetning av QR-koder</string>
   <string name="about_credits_scrypt_title">Scrypt, implementerad av Will Glozer och Colin Percival</string>
-  <string name="about_community_googleplus_title">Google+-community</string>
-  <string name="about_community_googleplus_summary">Diskussioner om appen</string>
-  <string name="about_market_app_title">Google Play-sida</string>
+  <string name="about_market_app_title">%s-sida</string>
   <string name="about_market_app_summary">Recensera eller betygsätt appen</string>
   <string name="notification_coins_received_msg">Mottagit %s</string>
   <string name="notification_peers_connected_msg">Ansluten till %d noder</string>

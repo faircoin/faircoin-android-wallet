@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<resources>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
 
 	<string name="toast_wallet_reset">Паричникот е ресетиран,\nпотребно е време да се обнови</string>
 	<string name="wallet_disclaimer_fragment_remind_safety">Користи на сопствен ризик. Прочитај &lt;u&gt;safety notes&lt;/u&gt;.</string>
@@ -25,7 +25,7 @@
 	<string name="wallet_transactions_options_filter_sent">Испратено</string>
 	<string name="wallet_transactions_fragment_empty_text_received">Нема примени Биткоини досега.</string>
 	<string name="wallet_transactions_fragment_empty_text_sent">Нема испратени Биткоини досега.</string>
-	<string name="wallet_transactions_fragment_empty_text_howto">Како да дојдеш до Биткоини?\n\nРазмени за традиционални пари,\nпродавај продукти или сервиси, или \nзаработи со работење.</string>
+	<string name="wallet_transactions_fragment_empty_text_howto">Како да дојдеш до Биткоини?\nРазмени за традиционални пари,\nпродавај продукти или сервиси, или \nзаработи со работење.</string>
 	<string name="wallet_transactions_row_warning_backup">Честитки, ја доби твојата прва исплата! Дали веќе направи &lt;u&gt;резервна копија од паричникот&lt;/u&gt;, во случај да го загубиш?</string>
 	<string name="wallet_transactions_fragment_coinbase">ископани</string>
 	<string name="wallet_transactions_fragment_internal">внатрешен</string>
@@ -38,8 +38,7 @@
 	<string name="wallet_timeskew_dialog_title">Провери ги поставувањата за време!</string>
 	<string name="wallet_timeskew_dialog_msg">Времето на твојот уред е неточно за %d минути. Најверојатно не можеш да праќаш или примаш Биткоини поради овој проблем.\n\nТреба да ги провериш и коригираш поставувањата за твоето време и временската зона.</string>
 	<string name="wallet_version_dialog_title">Достапна е нова верзија!</string>
-	<string name="wallet_version_dialog_msg">Оваа верзија поправа важни софтверски грешки. За детали, види го дневникот со грешки на Google Play.</string>
-	<string name="wallet_version_dialog_button_market">Google Play</string>
+	<string name="wallet_version_dialog_msg">Оваа верзија поправа важни софтверски грешки. За детали, види го дневникот со грешки на %s.</string>
 	<string name="wallet_version_dialog_button_binary">Преземи</string>
 	<string name="wallet_old_sdk_dialog_title">Андроид верзијата не е ажурирана</string>
 	<string name="wallet_old_sdk_dialog_message">Постојат големи шанси дека во некоја од следните верзии на Биткоин Паричник твојот уред нема да биде поддржан повеќе. Во некои случаи, може да биде тешко да трошиш биткоини од овој уред.\n\nОсвен ако знаеш што правиш, препорачуваме да ги преместиш твоите биткоини наскоро.</string>
@@ -104,12 +103,8 @@
 	<string name="export_keys_dialog_title">Направи резервна копија од приватните клучеви</string>
 	<string name="backup_wallet_dialog_message">Твоите приватни клучеви ќе бидат шифрирани со одбраната лозинка и зачувани во надворешен склад.</string>
 	<string name="export_keys_dialog_button_export">Направи резервна копија</string>
-	<string name="export_keys_dialog_success">Твоите приватни клучеви имаат резервна копија во\n\n%s\n\nЧувај ги на безбедно место и чувај ја твојата лозинка тајна!\n\nДали сакаш да ги архивираш твоите клучеви преку апликација?</string>
+	<string name="export_keys_dialog_success">Твоите приватни клучеви имаат резервна копија во\n\n%s\n\nЧувај ги на безбедно место и чувај ја твојата лозинка тајна!</string>
 	<string name="export_keys_dialog_failure">Не може да се креира резервна копија од твоите приватни клучеви:\n%s</string>
-	<string name="export_keys_dialog_button_archive">Архива</string>
-	<string name="export_keys_dialog_mail_subject">Резервна копија од приватен клуч на Биткоин Паричник</string>
-	<string name="export_keys_dialog_mail_text">Прикачениот шифриран фајл содржи приватни клучеви и треба да се чува на сигурно место. Не ја заборавај шифрираната лозинка!</string>
-	<string name="export_keys_dialog_mail_intent_chooser">Архивирај ги клучевите со…</string>
 	<string name="import_export_keys_dialog_password">лозинка</string>
 	<string name="import_export_keys_dialog_show">Прикажи лозинка</string>
 	<string name="import_export_keys_dialog_failure_title">Грешка</string>
@@ -154,9 +149,7 @@
 	<string name="about_category_credits">Оваа апликација користи…</string>
 	<string name="about_credits_bitcoinj_title">bitcoinj %s</string>
 	<string name="about_credits_zxing_title">ZXing</string>
-	<string name="about_community_googleplus_title">Google+ заедница</string>
-	<string name="about_community_googleplus_summary">Дискусија за апликацијата</string>
-	<string name="about_market_app_title">Google Play страница</string>
+	<string name="about_market_app_title">%s страница</string>
 	<string name="about_market_app_summary">Напиши мислење или оцени ја апликацијата</string>
 	<string name="notification_coins_received_msg">Примени %s</string>
 	<string name="notification_peers_connected_msg">%d поврзани точки</string>

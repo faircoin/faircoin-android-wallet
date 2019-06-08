@@ -17,7 +17,7 @@
 <b>HELP MEE</b>
 
 Bitcoin Wallet is <b>open source</b> en <b>free software</b>. Licentie: GPLv3
-https://www.gnu.org/licenses/gpl-3.0.en.html
+https://www.gnu.org/licenses/gpl-3.0.nl.html
 
 Onze broncode is beschikbaar op GitHub:
 https://github.com/bitcoin-wallet/bitcoin-wallet
@@ -29,7 +29,6 @@ https://www.transifex.com/bitcoin-wallet/bitcoin-wallet/
 <b>TESTIMONIALS</b>
 
 * Veel mobiele portemonnees baseren hun code op Bitcoin Wallet. Voorbeelden: blockchain.info en BTCX.
-* Aanbevolen mobiele portemonnee op https://bitcoin.org
 * Aangeraden door BitPay.
 
 

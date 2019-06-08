@@ -12,7 +12,7 @@
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
 package de.schildbach.wallet.util;
@@ -32,7 +32,7 @@ import android.annotation.SuppressLint;
 public class Iso8601Format extends SimpleDateFormat {
     private static final TimeZone UTC = TimeZone.getTimeZone("UTC");
 
-    private Iso8601Format(final String formatString) {
+    public Iso8601Format(final String formatString) {
         super(formatString);
 
         setTimeZone(UTC);

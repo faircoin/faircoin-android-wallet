@@ -1,17 +1,27 @@
 apply plugin: 'com.android.application'
 
+configurations {
+    all*.exclude group: 'com.google.android', module: 'android'
+}
+
 dependencies {
-    compile(project(':integration-android')) {
-        exclude(group: 'com.google.android', module: 'android')
-    }
-    compile 'org.bitcoinj:bitcoinj-core:0.12.3'
+    implementation project(':integration-android')
+    implementation 'com.google.protobuf:protobuf-java:3.6.1'
+    implementation files('libs/faircoinj-core-0.15.1.jar')
 }
 
 android {
     compileSdkVersion 'android-15'
-    buildToolsVersion '25.0.2'
+    buildToolsVersion '28.0.3'
 
     lintOptions { abortOnError false }
+
+    defaultConfig {
+        minSdkVersion 15
+        dexOptions {
+            preDexLibraries false
+        }
+    }
 
     sourceSets {
         main {
@@ -24,8 +34,6 @@ android {
 
     packagingOptions {
         exclude 'lib/x86_64/darwin/libscrypt.dylib'
-        exclude 'lib/x86_64/freebsd/libscrypt.so'
-        exclude 'lib/x86_64/linux/libscrypt.so'
         exclude 'com/google/thirdparty/publicsuffix/PublicSuffixPatterns.gwt.xml'
         exclude 'com/google/thirdparty/publicsuffix/PublicSuffixType.gwt.xml'
         exclude 'org/bitcoinj/crypto/mnemonic/wordlist/english.txt'

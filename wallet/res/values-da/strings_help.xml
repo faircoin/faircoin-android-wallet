@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<resources>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
   <string name="help_wallet">
 <![CDATA[
 		<p>
@@ -101,5 +101,22 @@
 			<b>Brug kun til små beløb</b> til daglig brug.
 		</p>
 	]]>
+    </string>
+  <string name="help_technical_notes">
+<![CDATA[
+        <p>
+            <b>Tekniske noter:</b>
+        </p>
+        <p>
+            Som SPV-/letvægtstegnebog følger Bitcoin Wallet den kæde med mest proof-of-work (til tider også kaldt den \"længste kæde\", den \"vindende kæde\" eller \"Bitcoin blokkæden\").
+            Du vil kun modtage indkommende betalinger og være i stand til at betale på denne kæde.
+            Ingen garantier gives om Bitcoin på minoritetskæder, dvs. kæder med mindre proof-of-work.
+        </p>
+        <p>
+            Førhen blev minoritetskæder altid irrelevante meget hurtigt.
+            Hvis du alligevel vælger at følge en minoritetskæde, anbefales du at bruge funktionen \"Betroet peer\" for udelukkende at forbinde til en bitcoind-implementering, som udfører din valgte kæde.
+            Hvis du ikke stoler på netværket mellem din tegnebog og den betroede peer, kan du bruge en VPN til at autentificere forbindelsen.
+        </p>
+    ]]>
     </string>
 </resources>

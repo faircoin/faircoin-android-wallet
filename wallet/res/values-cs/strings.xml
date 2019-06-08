@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<resources>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
   <string name="toast_wallet_reset">Vaše peněženka byla zresetována!\nObnova chvíli potrvá.</string>
   <string name="wallet_disclaimer_fragment_remind_safety">Použití na vlastní riziko. Přečtěte si &lt;u&gt;bezpečnostní pokyny&lt;/u&gt;.</string>
   <string name="wallet_disclaimer_fragment_remind_backup">Musíte si &lt;u&gt;zazálohovat svou peněženku&lt;/u&gt;!</string>
@@ -25,7 +25,7 @@
   <string name="exchange_rates_options_search">Vyhledat směnný kurz</string>
   <string name="wallet_transactions_fragment_empty_text_received">Zatím nebyly žádné bitcoiny obdrženy.</string>
   <string name="wallet_transactions_fragment_empty_text_sent">Zatím nebyly žádné bitcoiny odeslány.</string>
-  <string name="wallet_transactions_fragment_empty_text_howto">Jak získat Bitcoiny?\n\nSměnou za klasické peníze,\nprodejem zboží nebo služeb\nnebo vyděláním prací.</string>
+  <string name="wallet_transactions_fragment_empty_text_howto">Jak získat Bitcoiny?\nSměnou za klasické peníze,\nprodejem zboží nebo služeb\nnebo vyděláním prací.</string>
   <string name="wallet_transactions_row_warning_backup">Gratulujeme, přijal jste svou první platbu! Už jste si &lt;u&gt;zazálohovali tuto peněženku&lt;/u&gt;, abyste se ochránil proti ztrátě?</string>
   <string name="wallet_transactions_row_warning_storage_encryption">Tip: pokud chcete zvýšit bezpečnost své peněženky, můžete &lt;u&gt;šifrovat data svého přístroje&lt;/u&gt;. Toto také chrání data ostatních aplikací.</string>
   <string name="wallet_transactions_fragment_coinbase">vytěženo</string>
@@ -46,9 +46,8 @@
   <string name="wallet_timeskew_dialog_title">Ověřit nastavení data &amp; času</string>
   <string name="wallet_timeskew_dialog_msg">Čas na tomto přístroji se rozchází o %d minut. Kvůli tomuto problému pravděpodobně nemůžete posílat a přijímat Bitcoiny.\n\nZkontrolujte a pokud třeba opravte nastavení data, času a časové zóny.</string>
   <string name="wallet_version_dialog_title">Je k dispozici nová verze!</string>
-  <string name="wallet_version_dialog_msg">Tato verze opravuje důležité chyby. Podrobnosti naleznete v seznamu změn na Google Play.</string>
+  <string name="wallet_version_dialog_msg">Tato verze opravuje důležité chyby. Podrobnosti naleznete v seznamu změn na %s.</string>
   <string name="wallet_version_dialog_msg_deprecated">Pokud nevidíte aktualizaci, znamená to, že verze vašeho operačního systému Android již není podporována.</string>
-  <string name="wallet_version_dialog_button_market">Google Play</string>
   <string name="wallet_version_dialog_button_binary">Stáhnout</string>
   <string name="wallet_old_sdk_dialog_title">Verze systému Android je příliš stará</string>
   <string name="wallet_old_sdk_dialog_message">Je pravděpodobné, že jedna z následujících verzí Bitcoin Wallet nebude podporovat vaše zařízení. V některých případech může být v takové situaci komplikované utratit Bitcoiny na tomto zařízení.\n\nPokud si nejste jistí co dělat, tak doporučujeme tyto Bitcoiny přemístit brzy do jiného zařízení.</string>
@@ -188,19 +187,12 @@
   <string name="restore_wallet_dialog_success">Peněženka obnovena.</string>
   <string name="restore_wallet_dialog_success_replay">Vaše peněženka byla úspěšně obnovena. Její bilance bude vypočtena následně. To nějaký čas zabere.</string>
   <string name="import_keys_dialog_failure">Peněženka nemohla být obnovena:\n\n%s\n\nŠpatné heslo?</string>
-  <string name="backup_wallet_permission_dialog_title">Chybí oprávnění zapisovat</string>
-  <string name="backup_wallet_permission_dialog_message">Zálohování peněženky na externí úložiště vyžaduje oprávnění pro zápis.</string>
   <string name="export_keys_dialog_title">Zálohovat peněženku</string>
   <string name="backup_wallet_dialog_message">Vaše peněženka bude zašifrována zvoleným heslem a zapsána do externího úložiště.</string>
   <string name="backup_wallet_dialog_warning_encrypted">Vaše peněženka je zabezpečena PINem pro utrácení. Ujistěte se, že si pamatujete nejenom PIN ale také heslo k záloze.</string>
   <string name="export_keys_dialog_button_export">Zálohovat</string>
-  <string name="export_keys_dialog_success"><![CDATA[<p>Vaše peněženka byla zazálohována do <tt>%s</tt></p><p>Pokud vaše zařízení má vyměnitelnou SD kartu, tak záloha <i>by měla </i> být na této kartě. Vyndejte ji a uschovejte ji na bezpečném místě. Pokud karta <i>není</i> vyměnitelná, bude potřeba abyste přesunuli zálohu na jiné zařízení.</p><p><b>Pokud je záloha pouze na tomto zařízení tak se vystavujete riziku že ztratíte oboje zároveň!</b></p><p>Každopádně se ujistěte, že si pamatujete heslo. Přejete si nyní zazálohovat peněženku?</p>]]></string>
+  <string name="export_keys_dialog_success"><![CDATA[<p>Vaše peněženka byla zazálohována do <tt>%s</tt></p><p><b>Pokud je záloha pouze na tomto zařízení tak se vystavujete riziku že ztratíte oboje zároveň!</b></p><p>Každopádně se ujistěte, že si pamatujete heslo.</p>]]></string>
   <string name="export_keys_dialog_failure">Vaše peněženka nemohla být zazálohována:\n%s</string>
-  <string name="export_keys_dialog_button_archive">Archivovat</string>
-  <string name="export_keys_dialog_mail_subject">Bitcoin Wallet záloha</string>
-  <string name="export_keys_dialog_mail_text">Připojený zašifrovaný soubor obsahuje Bitcoin privátní klíče a měl by být vždy na bezpečném místě. Nezapomeňte šifrovací heslo!</string>
-  <string name="export_keys_dialog_mail_intent_chooser">Archivovat peněženku pomocí…</string>
-  <string name="export_keys_dialog_mail_intent_failed">Archivace peněženky selhala.</string>
   <string name="import_export_keys_dialog_password">heslo</string>
   <string name="backup_wallet_dialog_password_again">znovu</string>
   <string name="backup_wallet_dialog_password_mismatch">nesouhlasí!</string>
@@ -263,11 +255,11 @@
   <string name="preferences_initiate_reset_summary">Obnovit blokchain, transakce a stav peněženky. Nové nahrání bude chvíli trvat.</string>
   <string name="preferences_initiate_reset_dialog_message">Opravdu chcete obnovit a znovu nahrát blokchain?\n\nToto dočasně skryje stav peněženky a odstraní transakce. Obojí bude obnoveno, jakmile se blokchain synchronizuje.</string>
   <string name="preferences_initiate_reset_dialog_positive">Obnovit</string>
-  <string name="preferences_extended_public_key_title">Zobrazit xpub</string>
+  <string name="preferences_extended_public_key_title">Zobrazit extended public key</string>
   <string name="preferences_extended_public_key_summary">Zobrazit rozšířený veřejný klíč této peněženky za účelem jejího importu do dalších aplikací a služeb. Buďte opatrní: nové aplikace budou mít přístup k vašim platebním informacím.</string>
   <string name="bitmap_fragment_share">Sdílet…</string>
   <string name="extended_public_key_fragment_title">Rozšířený veřejný klíč</string>
-  <string name="extended_public_key_fragment_share">Sdílet xpub…</string>
+  <string name="extended_public_key_fragment_share">Sdílet extended public key…</string>
   <string name="report_issue_dialog_title_issue">Nahlásit problém</string>
   <string name="report_issue_dialog_title_crash">Detekován předchozí pád aplikace</string>
   <string name="report_issue_dialog_message_issue">Popište prosím svůj problém dostatečně detailně, aby ho bylo možno reprodukovat.</string>
@@ -279,7 +271,6 @@
   <string name="report_issue_dialog_collect_application_log">Připojit aplikační log</string>
   <string name="report_issue_dialog_collect_wallet_dump">Připojit dump peněženky</string>
   <string name="report_issue_dialog_mail_intent_chooser">Odeslat hlášení pomocí…</string>
-  <string name="report_issue_dialog_mail_intent_failed">Odeslání hlášení selhalo.</string>
   <string name="about_title">O aplikaci</string>
   <string name="about_version_title">Verze</string>
   <string name="about_copyright_title">Copyright</string>
@@ -289,9 +280,7 @@
   <string name="about_credits_bitcoinj_title">bitcoinj %s, implementace Bitcoin protokolu</string>
   <string name="about_credits_zxing_title">ZXing, knihovna pro zpracování QR-kódů</string>
   <string name="about_credits_scrypt_title">Scrypt, implementovali Will Glozer a Colin Percival</string>
-  <string name="about_community_googleplus_title">Komunita Google+</string>
-  <string name="about_community_googleplus_summary">Diskuze o aplikaci</string>
-  <string name="about_market_app_title">Stránka Google Play</string>
+  <string name="about_market_app_title">Stránka %s</string>
   <string name="about_market_app_summary">Zrecenzujte aplikaci nebo ji ohodnoťte</string>
   <string name="notification_coins_received_msg">Obdrženo %s</string>
   <string name="notification_peers_connected_msg">%d peerů připojeno</string>

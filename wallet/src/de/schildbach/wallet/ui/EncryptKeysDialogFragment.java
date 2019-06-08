@@ -12,30 +12,27 @@
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
 package de.schildbach.wallet.ui;
 
-import javax.annotation.Nullable;
-
 import org.bitcoinj.crypto.KeyCrypterException;
 import org.bitcoinj.crypto.KeyCrypterScrypt;
 import org.bitcoinj.wallet.Wallet;
+import org.bouncycastle.crypto.params.KeyParameter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.spongycastle.crypto.params.KeyParameter;
 
 import com.google.common.base.Strings;
 
+import de.schildbach.wallet.R;
 import de.schildbach.wallet.WalletApplication;
-import de.schildbach.wallet_test.R;
+import de.schildbach.wallet.util.WalletUtils;
 
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
-import android.app.DialogFragment;
-import android.app.FragmentManager;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnShowListener;
 import android.graphics.Typeface;
@@ -47,11 +44,14 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.DialogFragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.lifecycle.ViewModelProviders;
 
 /**
  * @author Andreas Schildbach
@@ -108,17 +108,17 @@ public class EncryptKeysDialogFragment extends DialogFragment {
     };
 
     @Override
-    public void onAttach(final Activity activity) {
-        super.onAttach(activity);
-
-        this.activity = (AbstractWalletActivity) activity;
-        this.application = (WalletApplication) activity.getApplication();
+    public void onAttach(final Context context) {
+        super.onAttach(context);
+        this.activity = (AbstractWalletActivity) context;
+        this.application = activity.getWalletApplication();
         this.wallet = application.getWallet();
     }
 
     @Override
     public void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        log.info("opening dialog {}", getClass().getName());
 
         backgroundThread = new HandlerThread("backgroundThread", Process.THREAD_PRIORITY_BACKGROUND);
         backgroundThread.start();
@@ -146,7 +146,8 @@ public class EncryptKeysDialogFragment extends DialogFragment {
         final DialogBuilder builder = new DialogBuilder(activity);
         builder.setTitle(R.string.encrypt_keys_dialog_title);
         builder.setView(view);
-        builder.setPositiveButton(R.string.button_ok, null); // dummy, just to make it show
+        // dummies, just to make buttons show
+        builder.setPositiveButton(R.string.button_ok, null);
         builder.setNegativeButton(R.string.button_cancel, null);
         builder.setCancelable(false);
 
@@ -160,10 +161,17 @@ public class EncryptKeysDialogFragment extends DialogFragment {
                 negativeButton = dialog.getButton(DialogInterface.BUTTON_NEGATIVE);
 
                 positiveButton.setTypeface(Typeface.DEFAULT_BOLD);
-                positiveButton.setOnClickListener(new OnClickListener() {
+                positiveButton.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(final View v) {
                         handleGo();
+                    }
+                });
+
+                negativeButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(final View v) {
+                        dismissAllowingStateLoss();
                     }
                 });
 
@@ -272,7 +280,9 @@ public class EncryptKeysDialogFragment extends DialogFragment {
                         updateView();
 
                         if (state == State.DONE) {
-                            application.backupWallet();
+                            WalletUtils.autoBackupWallet(activity, wallet);
+                            // trigger load manually because of missing callbacks for encryption state
+                            ViewModelProviders.of(activity).get(WalletActivityViewModel.class).walletEncrypted.load();
                             delayedDismiss();
                         }
                     }

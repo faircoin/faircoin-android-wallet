@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<resources>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
 
 	<string name="toast_wallet_reset">Peňaženka zresetovaná,\nobnova chvíľu potrvá</string>
 	<string name="wallet_disclaimer_fragment_remind_safety">Použitie na vlastné riziko. Viac informácií v sekcii &lt;u&gt;Bezpečnosť&lt;/u&gt;.</string>
@@ -25,7 +25,7 @@
 	<string name="wallet_transactions_options_filter_sent">Odoslané</string>
 	<string name="wallet_transactions_fragment_empty_text_received">Zatiaľ neboli prijaté žiadne Bitcoiny</string>
 	<string name="wallet_transactions_fragment_empty_text_sent">Zatiaľ neboli odoslané žiadne Bitcoiny</string>
-	<string name="wallet_transactions_fragment_empty_text_howto">Ako získať Bitcoiny?\n\nVýmenou za tradičné peniaze,\npredajom tovarov a služieb,\nalebo prácou.</string>
+	<string name="wallet_transactions_fragment_empty_text_howto">Ako získať Bitcoiny?\nVýmenou za tradičné peniaze,\npredajom tovarov a služieb,\nalebo prácou.</string>
 	<string name="wallet_transactions_row_warning_backup">Gratulujeme, obdržali ste svoju prvú platbu! Urobili ste &lt;u&gt;zálohu peňaženky&lt;/u&gt;, aby ste ju ochránili pred stratou?</string>
 	<string name="wallet_transactions_fragment_coinbase">vyťažené</string>
 	<string name="wallet_transactions_fragment_internal">vnútorné</string>
@@ -38,8 +38,7 @@
 	<string name="wallet_timeskew_dialog_title">Skontrolujte nastavenie času!</string>
 	<string name="wallet_timeskew_dialog_msg">Vaše zariadenie má posunutý čas o %d minúť. Pravdepodobne nemôže posielať a prijímať Bitcoiny kvôli tomuto problému.\n\nMali by ste skontrolovať a upraviť nastavenie času alebo časovej zóny.</string>
 	<string name="wallet_version_dialog_title">Je dostupná nová verzia!</string>
-	<string name="wallet_version_dialog_msg">Táto verzia opravuje kritické chyby. Pre viac informácií navštívte Google Play.</string>
-	<string name="wallet_version_dialog_button_market">Google Play</string>
+	<string name="wallet_version_dialog_msg">Táto verzia opravuje kritické chyby. Pre viac informácií navštívte %s.</string>
 	<string name="wallet_version_dialog_button_binary">Stiahnuť</string>
 	<string name="wallet_old_sdk_dialog_title">Verzia vášho Androidu je zastaralá</string>
 	<string name="wallet_old_sdk_dialog_message">Je možné, že v novších verziách Bitcoin Wallet už nebude podporované vaše zariadenie. V určitých prípadoch môže byť obtiažne minúť Bitcoiny z tohto zariadenia.\n\nJe odporúčané presunúť Bitcoiny z tohto zariadenia.</string>
@@ -121,13 +120,8 @@
 	<string name="export_keys_dialog_title">Zálohovať privátne kľúče</string>
 	<string name="backup_wallet_dialog_message">Privátne kľúče budú zašifrované zvoleným heslom a uložené na externú pamäť.</string>
 	<string name="export_keys_dialog_button_export">Zálohovať</string>
-	<string name="export_keys_dialog_success">Privátne kľúče boli zálohované do \n\n%s\n\nDržte ich v bezpečí, a taktiež držte v bezpečí vaše heslo!\n\nChcete archivovať kľúče použitím aplikácie?</string>
+	<string name="export_keys_dialog_success">Privátne kľúče boli zálohované do \n\n%s\n\nDržte ich v bezpečí, a taktiež držte v bezpečí vaše heslo!</string>
 	<string name="export_keys_dialog_failure">Vaše privátne kľúče sa nepodarilo zálohovať:\n%s</string>
-	<string name="export_keys_dialog_button_archive">Archivovať</string>
-	<string name="export_keys_dialog_mail_subject">Bitcoin Wallet - záloha privátnych kľúčov</string>
-	<string name="export_keys_dialog_mail_text">Príloha obsahuje zašifrované privátne kľúče, uchovajte ich v bezpečí. Nezabudnite vaše heslo!</string>
-	<string name="export_keys_dialog_mail_intent_chooser">Archivovať kľúče použitím…</string>
-	<string name="export_keys_dialog_mail_intent_failed">Archivácia kľúčov sa nepodarila.</string>
 	<string name="import_export_keys_dialog_password">heslo</string>
 	<string name="import_export_keys_dialog_show">Zobraziť heslo</string>
 	<string name="import_export_keys_dialog_failure_title">Chyba</string>
@@ -169,15 +163,12 @@
 	<string name="report_issue_dialog_collect_application_log">Pripojiť aplikačný log</string>
 	<string name="report_issue_dialog_collect_wallet_dump">Pripojiť dáta peňaženky</string>
 	<string name="report_issue_dialog_mail_intent_chooser">Odoslať správu použitím…</string>
-	<string name="report_issue_dialog_mail_intent_failed">Odosielanie hlásenia zlyhalo.</string>
 	<string name="about_title">O aplikácií</string>
 	<string name="about_license_title">Licencia</string>
 	<string name="about_category_credits">Táto aplikácia používa…</string>
 	<string name="about_credits_bitcoinj_title">bitcoinj %s</string>
 	<string name="about_credits_zxing_title">ZXing</string>
-	<string name="about_community_googleplus_title">Google+ Komunita</string>
-	<string name="about_community_googleplus_summary">Diskusie o aplikácii</string>
-	<string name="about_market_app_title">Google Play stránka</string>
+	<string name="about_market_app_title">%s stránka</string>
 	<string name="about_market_app_summary">Ohodnotiť aplikáciu</string>
 	<string name="notification_coins_received_msg">Prijaté %s</string>
 	<string name="notification_peers_connected_msg">%d pripojených uzlov</string>

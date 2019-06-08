@@ -1,1 +1,2 @@
-res/mipmap-*/
+res/mipmap-*hdpi/
+.externalNativeBuild/

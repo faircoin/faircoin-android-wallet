@@ -12,7 +12,7 @@
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
 package de.schildbach.wallet;
@@ -20,36 +20,49 @@ package de.schildbach.wallet;
 import java.io.File;
 import java.util.concurrent.TimeUnit;
 
+import org.bitcoinj.core.Coin;
 import org.bitcoinj.core.Context;
 import org.bitcoinj.core.NetworkParameters;
 import org.bitcoinj.params.MainNetParams;
 import org.bitcoinj.params.TestNet3Params;
+import org.bitcoinj.script.Script;
+import org.bitcoinj.store.SPVBlockStore;
 import org.bitcoinj.utils.MonetaryFormat;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.google.common.io.BaseEncoding;
-import com.squareup.okhttp.HttpUrl;
-import com.squareup.okhttp.OkHttpClient;
-import com.squareup.okhttp.logging.HttpLoggingInterceptor;
-
-import de.schildbach.wallet_test.R;
 
 import android.os.Build;
 import android.os.Environment;
 import android.text.format.DateUtils;
+import okhttp3.HttpUrl;
+import okhttp3.OkHttpClient;
+import okhttp3.logging.HttpLoggingInterceptor;
 
 /**
  * @author Andreas Schildbach
  */
 public final class Constants {
-    public static final boolean TEST = R.class.getPackage().getName().contains("_test");
+    public static final boolean TEST = false;
 
     /** Network this wallet is on (e.g. testnet or mainnet). */
     public static final NetworkParameters NETWORK_PARAMETERS = TEST ? TestNet3Params.get() : MainNetParams.get();
 
     /** Bitcoinj global context. */
     public static final Context CONTEXT = new Context(NETWORK_PARAMETERS);
+
+    /**
+     * The type of Bitcoin addresses used for the initial wallet: {@link Script.ScriptType#P2PKH} for classic
+     * Base58.
+     */
+    public static final Script.ScriptType DEFAULT_OUTPUT_SCRIPT_TYPE = Script.ScriptType.P2PKH;
+
+    /**
+     * The type of Bitcoin addresses to upgrade the current wallet to: {@link Script.ScriptType#P2PKH} for classic
+     * Base58.
+     */
+    public static final Script.ScriptType UPGRADE_OUTPUT_SCRIPT_TYPE = Script.ScriptType.P2PKH;
 
     /** Enable switch for synching of the blockchain */
     public static final boolean ENABLE_BLOCKCHAIN_SYNC = true;
@@ -68,7 +81,7 @@ public final class Constants {
         public static final String WALLET_FILENAME_PROTOBUF = "wallet-protobuf" + FILENAME_NETWORK_SUFFIX;
 
         /** How often the wallet is autosaved. */
-        public static final long WALLET_AUTOSAVE_DELAY_MS = 5 * DateUtils.SECOND_IN_MILLIS;
+        public static final long WALLET_AUTOSAVE_DELAY_MS = 3 * DateUtils.SECOND_IN_MILLIS;
 
         /** Filename of the automatic key backup (old format, can only be read). */
         public static final String WALLET_KEY_BACKUP_BASE58 = "key-backup-base58" + FILENAME_NETWORK_SUFFIX;
@@ -83,14 +96,14 @@ public final class Constants {
         public static final File EXTERNAL_WALLET_BACKUP_DIR = Environment
                 .getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);
 
-        /** Filename of the manual key backup (old format, can only be read). */
-        public static final String EXTERNAL_WALLET_KEY_BACKUP = "bitcoin-wallet-keys" + FILENAME_NETWORK_SUFFIX;
-
         /** Filename of the manual wallet backup. */
-        public static final String EXTERNAL_WALLET_BACKUP = "bitcoin-wallet-backup" + FILENAME_NETWORK_SUFFIX;
+        public static final String EXTERNAL_WALLET_BACKUP = "faircoin-wallet-backup" + FILENAME_NETWORK_SUFFIX;
 
         /** Filename of the block store for storing the chain. */
         public static final String BLOCKCHAIN_FILENAME = "blockchain" + FILENAME_NETWORK_SUFFIX;
+
+        /** Capacity of the block store. */
+        public static final int BLOCKCHAIN_STORE_CAPACITY = SPVBlockStore.DEFAULT_CAPACITY * 2;
 
         /** Filename of the block checkpoints file. */
         public static final String CHECKPOINTS_FILENAME = "checkpoints" + FILENAME_NETWORK_SUFFIX + ".txt";
@@ -102,39 +115,32 @@ public final class Constants {
         public static final String ELECTRUM_SERVERS_FILENAME = "electrum-servers.txt";
     }
 
-    /** Maximum size of backups. Files larger will be rejected. */
-    public static final long BACKUP_MAX_CHARS = 10000000;
-
-    /** Currency code for the wallet name resolver. */
-    public static final String WALLET_NAME_CURRENCY_CODE = NETWORK_PARAMETERS.getId()
-            .equals(NetworkParameters.ID_MAINNET) ? "btc" : "tbtc";
-
     /** URL to fetch version alerts from. */
-    public static final HttpUrl VERSION_URL = HttpUrl.parse("https://wallet.schildbach.de/version");
+    public static final HttpUrl VERSION_URL = HttpUrl.parse("https://download.faircoin.world/api/android-wallet-version");
     /** URL to fetch dynamic fees from. */
-    public static final HttpUrl DYNAMIC_FEES_URL = HttpUrl.parse("https://wallet.schildbach.de/fees");
+    public static final HttpUrl DYNAMIC_FEES_URL = HttpUrl.parse("https://download.faircoin.world/api/fees");
 
     /** MIME type used for transmitting single transactions. */
-    public static final String MIMETYPE_TRANSACTION = "application/x-btctx";
+    public static final String MIMETYPE_TRANSACTION = "application/x-fairtx";
 
     /** MIME type used for transmitting wallet backups. */
-    public static final String MIMETYPE_WALLET_BACKUP = "application/x-bitcoin-wallet-backup";
+    public static final String MIMETYPE_WALLET_BACKUP = "application/x-faircoin-wallet-backup";
 
     /** Number of confirmations until a transaction is fully confirmed. */
     public static final int MAX_NUM_CONFIRMATIONS = 7;
 
     /** User-agent to use for network access. */
-    public static final String USER_AGENT = "Bitcoin Wallet";
+    public static final String USER_AGENT = "FairCoin Wallet";
 
     /** Default currency to use if all default mechanisms fail. */
     public static final String DEFAULT_EXCHANGE_CURRENCY = "USD";
 
     /** Donation address for tip/donate action. */
     public static final String DONATION_ADDRESS = NETWORK_PARAMETERS.getId().equals(NetworkParameters.ID_MAINNET)
-            ? "17dttYQer4DNLbx2c3etc7abx2MC7RhzG6" : null;
+            ? "fairVs8iHyLzgHQrdxb9j6hR4WGpdDbKN3" : null;
 
     /** Recipient e-mail address for reports. */
-    public static final String REPORT_EMAIL = "bitcoin.wallet.developers@gmail.com";
+    public static final String REPORT_EMAIL = "android.wallet@fair-coin.org";
 
     /** Subject line for manually reported issues. */
     public static final String REPORT_SUBJECT_ISSUE = "Reported issue";
@@ -156,10 +162,8 @@ public final class Constants {
 
     public static final BaseEncoding HEX = BaseEncoding.base16().lowerCase();
 
-    public static final String SOURCE_URL = "https://github.com/bitcoin-wallet/bitcoin-wallet";
-    public static final String BINARY_URL = "https://github.com/bitcoin-wallet/bitcoin-wallet/releases";
-    public static final String MARKET_APP_URL = "market://details?id=%s";
-    public static final String WEBMARKET_APP_URL = "https://play.google.com/store/apps/details?id=%s";
+    public static final String SOURCE_URL = "https://github.com/faircoin/faircoin-android-wallet";
+    public static final String BINARY_URL = "https://download.faircoin.world/";
 
     public static final int PEER_DISCOVERY_TIMEOUT_MS = 10 * (int) DateUtils.SECOND_IN_MILLIS;
     public static final int PEER_TIMEOUT_MS = 15 * (int) DateUtils.SECOND_IN_MILLIS;
@@ -170,16 +174,21 @@ public final class Constants {
 
     public static final long DELAYED_TRANSACTION_THRESHOLD_MS = 2 * DateUtils.HOUR_IN_MILLIS;
 
-    public static final int SDK_DEPRECATED_BELOW = Build.VERSION_CODES.JELLY_BEAN;
+    /** A balance above this amount will show a warning */
+    public static final Coin TOO_MUCH_BALANCE_THRESHOLD = Coin.COIN.multiply(20000);
+    /** A balance above this amount will cause the donate option to be shown */
+    public static final Coin SOME_BALANCE_THRESHOLD = Coin.COIN.multiply(500);
 
-    public static final boolean BUG_OPENSSL_HEARTBLEED = Build.VERSION.SDK_INT == Build.VERSION_CODES.JELLY_BEAN
-            && Build.VERSION.RELEASE.startsWith("4.1.1");
+    public static final int SDK_DEPRECATED_BELOW = Build.VERSION_CODES.LOLLIPOP;
 
-    public static final int MEMORY_CLASS_LOWEND = 64;
-
-    public static final int NOTIFICATION_ID_CONNECTED = 0;
-    public static final int NOTIFICATION_ID_COINS_RECEIVED = 1;
-    public static final int NOTIFICATION_ID_INACTIVITY = 2;
+    public static final int NOTIFICATION_ID_CONNECTED = 1;
+    public static final int NOTIFICATION_ID_COINS_RECEIVED = 2;
+    public static final int NOTIFICATION_ID_MAINTENANCE = 3;
+    public static final int NOTIFICATION_ID_INACTIVITY = 4;
+    public static final String NOTIFICATION_GROUP_KEY_RECEIVED = "group-received";
+    public static final String NOTIFICATION_CHANNEL_ID_RECEIVED = "received";
+    public static final String NOTIFICATION_CHANNEL_ID_ONGOING = "ongoing";
+    public static final String NOTIFICATION_CHANNEL_ID_IMPORTANT = "important";
 
     /** Desired number of scrypt iterations for deriving the spending PIN */
     public static final int SCRYPT_ITERATIONS_TARGET = 65536;
@@ -187,19 +196,13 @@ public final class Constants {
 
     /** Default ports for Electrum servers */
     public static final int ELECTRUM_SERVER_DEFAULT_PORT_TCP = NETWORK_PARAMETERS.getId()
-            .equals(NetworkParameters.ID_MAINNET) ? 50001 : 51001;
+            .equals(NetworkParameters.ID_MAINNET) ? 51811 : 50811;
     public static final int ELECTRUM_SERVER_DEFAULT_PORT_TLS = NETWORK_PARAMETERS.getId()
-            .equals(NetworkParameters.ID_MAINNET) ? 50002 : 51002;
+            .equals(NetworkParameters.ID_MAINNET) ? 51812 : 50812;
 
     /** Shared HTTP client, can reuse connections */
-    public static final OkHttpClient HTTP_CLIENT = new OkHttpClient();
+    public static final OkHttpClient HTTP_CLIENT;
     static {
-        HTTP_CLIENT.setFollowRedirects(false);
-        HTTP_CLIENT.setFollowSslRedirects(true);
-        HTTP_CLIENT.setConnectTimeout(15, TimeUnit.SECONDS);
-        HTTP_CLIENT.setWriteTimeout(15, TimeUnit.SECONDS);
-        HTTP_CLIENT.setReadTimeout(15, TimeUnit.SECONDS);
-
         final HttpLoggingInterceptor loggingInterceptor = new HttpLoggingInterceptor(
                 new HttpLoggingInterceptor.Logger() {
                     @Override
@@ -208,7 +211,15 @@ public final class Constants {
                     }
                 });
         loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BASIC);
-        HTTP_CLIENT.interceptors().add(loggingInterceptor);
+
+        final OkHttpClient.Builder httpClientBuilder = new OkHttpClient.Builder();
+        httpClientBuilder.followRedirects(false);
+        httpClientBuilder.followSslRedirects(true);
+        httpClientBuilder.connectTimeout(15, TimeUnit.SECONDS);
+        httpClientBuilder.writeTimeout(15, TimeUnit.SECONDS);
+        httpClientBuilder.readTimeout(15, TimeUnit.SECONDS);
+        httpClientBuilder.addInterceptor(loggingInterceptor);
+        HTTP_CLIENT = httpClientBuilder.build();
     }
 
     private static final Logger log = LoggerFactory.getLogger(Constants.class);

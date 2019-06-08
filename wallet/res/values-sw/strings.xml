@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<resources>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
   <string name="toast_wallet_reset">Pochi yako mara kwa upya. Sasa, itakuwa upya.</string>
   <string name="wallet_disclaimer_fragment_remind_safety">Wacha tu! Matumizi kwa wajibu wako mwenyewe. Upechop maelezo usalama.</string>
   <string name="wallet_disclaimer_fragment_remind_backup">Lazima kubamba backup!</string>
@@ -43,9 +43,8 @@
   <string name="wallet_timeskew_dialog_title">Cheki wazingira wakati yako!</string>
   <string name="wallet_timeskew_dialog_msg">Simu yako wakati ni makosa %d minuti. Pengine hawezi kutuma Bitcoin kwa sababu ya tatizo hili. Angalia mipangilio yako majira ya saa.</string>
   <string name="wallet_version_dialog_title">Toleo jipya ni hapa kwa shusha!</string>
-  <string name="wallet_version_dialog_msg">Hii toleo kunasa makosa makubwa. Kwa maelezo, kuona changelog juu ya Google Play.</string>
+  <string name="wallet_version_dialog_msg">Hii toleo kunasa makosa makubwa. Kwa maelezo, kuona changelog juu ya %s.</string>
   <string name="wallet_version_dialog_msg_deprecated">Kama huwezi kupata toleo jipya, Android yako ni mzee, sana!</string>
-  <string name="wallet_version_dialog_button_market">Google Play</string>
   <string name="wallet_version_dialog_button_binary">Shusha</string>
   <string name="wallet_old_sdk_dialog_title">Android yako ni mzee, sana!</string>
   <string name="wallet_old_sdk_dialog_message">Matoleo ya pili ya pochi hii si msaada Android yako yoyote zaidi. Katika baadhi ya matukio, matumizi ya pesa itakuwa vigumu. Kama wewe ni uhakika, tafadhali kuchukua pesa yako hivi karibuni.</string>
@@ -163,13 +162,8 @@
   <string name="export_keys_dialog_title">Fanya backup za pochi yako</string>
   <string name="backup_wallet_dialog_message">Backup yako itakuwa imeandikwa na siri, na kuhamishwa kwa disc nje.</string>
   <string name="export_keys_dialog_button_export">Fanya backup</string>
-  <string name="export_keys_dialog_success"><![CDATA[<p>Umeweka backup ya pochi yako za <tt>%s</tt></p><p>Kama simu yakoina kadi SD backup yako <i>lazima</i> kuwa juuu ya kadi ambayo. Ondoa kadi, na kuitunza katika mahali salama. Kama kadi ni <i>si</i> tofauti, lazima kuweka backup yako na baadhi ya sehemu nyingine salama.</p><p><b>Kama una backup yako katika simu yako, una hatari ya kupoleza pesa yako.</b></p><p>Kuhakikisha kwamba unakumbuka siri ya backup. Ja, unataka kufanya backup sasa?</p>]]></string>
+  <string name="export_keys_dialog_success"><![CDATA[<p>Umeweka backup ya pochi yako za <tt>%s</tt></p><p><b>Kama una backup yako katika simu yako, una hatari ya kupoleza pesa yako.</b></p><p>Kuhakikisha kwamba unakumbuka siri ya backup.</p>]]></string>
   <string name="export_keys_dialog_failure">Backup zza pochi yako alishindwa:\n%s</string>
-  <string name="export_keys_dialog_button_archive">Fanya backup</string>
-  <string name="export_keys_dialog_mail_subject">Fanya Bitcoin pochi backup</string>
-  <string name="export_keys_dialog_mail_text">Faili masharti ya siri ina bitcpoin pochi funguo. Kuitunza katika mahali salama. Usisahau siri!!</string>
-  <string name="export_keys_dialog_mail_intent_chooser">Fanya backup kutumia…</string>
-  <string name="export_keys_dialog_mail_intent_failed">Backup alisinhdwe.</string>
   <string name="import_export_keys_dialog_password">siri</string>
   <string name="import_export_keys_dialog_show">Soma siri</string>
   <string name="import_export_keys_dialog_failure_title">kosa</string>
@@ -213,10 +207,10 @@
   <string name="preferences_initiate_reset_summary">Upya Blockchain, shughuli, na usalama ya pochi. Bambika itachukua muda mfupi.</string>
   <string name="preferences_initiate_reset_dialog_message">Je, ungependa upya na bambika na Blockchain?\n\nHii muda kujificha pochi mizani yako na kuondoa shughuli. Wote itarejea kama Blockchain kubamba ikiendelea.</string>
   <string name="preferences_initiate_reset_dialog_positive">Upya</string>
-  <string name="preferences_extended_public_key_title">Soma xpub</string>
+  <string name="preferences_extended_public_key_title">Soma extended public key</string>
   <string name="preferences_extended_public_key_summary">Mwambie kupanuliwa umma muhimu ya pochi yako, hivyo inaweza kuwa nje katika programu na huduma nyingine. Kuwa makini: kufanya hivyo itakuwa wazi siri yako ya fedha kwa programu hiyo.</string>
   <string name="extended_public_key_fragment_title">Mwambie kupanuliwa umma muhimu ya pochi yako</string>
-  <string name="extended_public_key_fragment_share">Shiriki xpub…</string>
+  <string name="extended_public_key_fragment_share">Shiriki extended public key…</string>
   <string name="report_issue_dialog_title_issue">Ripoti tatizo</string>
   <string name="report_issue_dialog_title_crash">Kupatikana ajali uliopita</string>
   <string name="report_issue_dialog_message_issue">Tafadhali eleza tatizo lako kama just kama unaweza.</string>
@@ -228,7 +222,6 @@
   <string name="report_issue_dialog_collect_application_log">Taarifa ya logi mpango</string>
   <string name="report_issue_dialog_collect_wallet_dump">Taarifa ya pochi ajali</string>
   <string name="report_issue_dialog_mail_intent_chooser">Soma ripoti kutumia…</string>
-  <string name="report_issue_dialog_mail_intent_failed">Kusoma ripoti alishindwe.</string>
   <string name="about_title">Kuhusu</string>
   <string name="about_version_title">Maelezo</string>
   <string name="about_copyright_title">Hati miliki</string>
@@ -237,9 +230,7 @@
   <string name="about_category_credits">Hii programu anatumia…</string>
   <string name="about_credits_bitcoinj_title">bitcoinj %s</string>
   <string name="about_credits_zxing_title">ZXing</string>
-  <string name="about_community_googleplus_title">Google+ jumuia</string>
-  <string name="about_community_googleplus_summary">Majadiliano kuhusu programu huu</string>
-  <string name="about_market_app_title">Tovuti ya Google Play</string>
+  <string name="about_market_app_title">Tovuti ya %s</string>
   <string name="about_market_app_summary">Mapitio na kiwango programu hii</string>
   <string name="notification_coins_received_msg">Kupokea %s</string>
   <string name="notification_peers_connected_msg">%d rika kushikamana</string>

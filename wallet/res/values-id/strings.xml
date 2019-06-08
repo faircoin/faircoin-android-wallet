@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<resources>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
 
 	<string name="toast_wallet_reset">Dompet diatur-ulang,\nakan memakan waktu utk dipulihkan</string>
 	<string name="wallet_disclaimer_fragment_remind_safety">Gunakan dlm resiko Anda. Baca &lt;u&gt;nota keamanan&lt;/u&gt;.</string>
@@ -25,7 +25,7 @@
 	<string name="wallet_transactions_options_filter_sent">Dikirim</string>
 	<string name="wallet_transactions_fragment_empty_text_received">Tidak ada Bitcoin yg diterima.</string>
 	<string name="wallet_transactions_fragment_empty_text_sent">Tidak ada Bitcoin yg dikirim.</string>
-	<string name="wallet_transactions_fragment_empty_text_howto">Bagaimana mendapatkan Bitcoin?\n\nTukar dgn uang tradisional,\njual barang atau jasa atau\ndengan bekerja.</string>
+	<string name="wallet_transactions_fragment_empty_text_howto">Bagaimana mendapatkan Bitcoin?\nTukar dgn uang tradisional,\njual barang atau jasa atau\ndengan bekerja.</string>
 	<string name="wallet_transactions_row_warning_backup">Selamat, Anda menerima pembayaran pertama Anda! Sudahkah Anda &lt;u&gt;mencadangkan dompet Anda&lt;/u&gt;, utk hindari kehilangan?</string>
 	<string name="wallet_transactions_fragment_coinbase">ditambang</string>
 	<string name="wallet_transactions_fragment_internal">Internal</string>
@@ -38,8 +38,7 @@
 	<string name="wallet_timeskew_dialog_title">Periksa pengaturan waktu!</string>
 	<string name="wallet_timeskew_dialog_msg">Waktu perangkat Anda tertinggal %d menit. Anda mungkin tidak dapat mengirim atau menerima Bitcoin karena hal ini.\n\nAnda seharusnya memeriksa dan atur kembali pengaturan waktu dan zona waktu Anda.</string>
 	<string name="wallet_version_dialog_title">Versi baru tersedia!</string>
-	<string name="wallet_version_dialog_msg">Versi ini perbaikan bug penting. Untuk rincian, lihatlah catatan perubahan di Google Play.</string>
-	<string name="wallet_version_dialog_button_market">Google Play</string>
+	<string name="wallet_version_dialog_msg">Versi ini perbaikan bug penting. Untuk rincian, lihatlah catatan perubahan di %s.</string>
 	<string name="wallet_version_dialog_button_binary">Unduh</string>
 	<string name="wallet_old_sdk_dialog_title">Versi Android kedaluwarsa</string>
 	<string name="wallet_old_sdk_dialog_message">Salah satu kemungkinan Bitcoin Wallet versi akan datang tidak akan mendukung ponsel Anda lagi. Dalam beberapa kasus, akan sulit untuk menggunakan koin di ponsel ini.\n\nKecuali Anda tahu apa yang Anda lakukan, sangat direkomendasikan untuk segera memindahkan koin Anda.</string>
@@ -104,12 +103,8 @@
 	<string name="export_keys_dialog_title">Cadangkan kunci pribadi</string>
 	<string name="backup_wallet_dialog_message">Kunci pribadi Anda akan dienkripsi dgn kata sandi terpilih dan akan disimpan ke penyimpanan eksternal.</string>
 	<string name="export_keys_dialog_button_export">Cadangkan</string>
-	<string name="export_keys_dialog_success">Kunci pribadi Anda telah dicadangkan ke\n\n%s\n\nAmankan, dan jagalah kata sandi Anda!\n\nApakah Anda ingin arsipkan dgn apl?</string>
+	<string name="export_keys_dialog_success">Kunci pribadi Anda telah dicadangkan ke\n\n%s\n\nAmankan, dan jagalah kata sandi Anda!</string>
 	<string name="export_keys_dialog_failure">Kunci pribadi Anda tidak dpt dicadangkan:\n%s</string>
-	<string name="export_keys_dialog_button_archive">Arsip</string>
-	<string name="export_keys_dialog_mail_subject">Pencadangan kunci pribadi Bitcoin Wallet</string>
-	<string name="export_keys_dialog_mail_text">Berkas terenkripsi terlampir mengandung kunci pribadi Bitcoin dan harus dijaga senantiasa. Jangan lupakan kata sandi enkripsi!</string>
-	<string name="export_keys_dialog_mail_intent_chooser">Arsipkan kunci dgn…</string>
 	<string name="import_export_keys_dialog_password">kata sandi</string>
 	<string name="import_export_keys_dialog_show">Tampilkan sandi</string>
 	<string name="import_export_keys_dialog_failure_title">Kesalahan</string>
@@ -149,7 +144,7 @@
 	<string name="about_category_credits">Apl ini menggunakan…</string>
 	<string name="about_credits_bitcoinj_title">bitcoinj %s</string>
 	<string name="about_credits_zxing_title">ZXing</string>
-	<string name="about_market_app_title">Halaman Apl Google Play</string>
+	<string name="about_market_app_title">Halaman Apl %s</string>
 	<string name="notification_coins_received_msg">Diterima %s</string>
 	<string name="notification_peers_connected_msg">%d peer terhubung</string>
 	<!-- generic buttons -->
